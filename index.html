@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>吴永芝 · 材料科学与工程</title>
+<meta name="description" content="吴永芝，材料科学与工程专业本科大三。水系锌离子电池课题，朝钠离子电池材料研发方向前进。">
+<style>
+:root{
+  --paper:#F7F5F0;
+  --card:#FCFBF8;
+  --ink:#1A1A18;
+  --graphite:#6B6B66;
+  --faint:#A9A69F;
+  --blue:#2C5F8A;
+  --line:rgba(26,26,24,.14);
+  --line-soft:rgba(26,26,24,.075);
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased}
+.wrap{width:min(1040px,calc(100% - 64px));margin-inline:auto}
+a{color:inherit}
+::selection{background:rgba(44,95,138,.16)}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:50}
+.skip-link:focus{left:16px;top:16px}
+
+.topbar{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.topbar-inner{height:66px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.wordmark{font-family:var(--serif);font-size:17px;text-decoration:none;white-space:nowrap}
+.wordmark span{font-family:var(--sans);font-size:12px;color:var(--graphite);margin-left:10px}
+nav{display:flex;gap:26px}
+nav a{font-size:13px;color:var(--graphite);text-decoration:none;padding-bottom:3px;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+nav a:hover,nav a.active{color:var(--blue);border-color:var(--blue)}
+
+.hero{padding:104px 0 92px}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:72px;align-items:center}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--blue);margin:0}
+h1{font-family:var(--serif);font-size:clamp(64px,9vw,108px);font-weight:600;line-height:1.02;letter-spacing:-.03em;margin:26px 0 0}
+.lede{font-size:clamp(19px,2.1vw,23px);line-height:1.6;margin:24px 0 0;letter-spacing:.01em}
+.meta{margin:34px 0 0;display:grid;gap:7px}
+.meta div{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:baseline}
+.meta dt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--faint)}
+.meta dd{margin:0;font-size:13px;color:var(--graphite)}
+.hero-actions{display:flex;align-items:center;gap:28px;margin-top:38px;flex-wrap:wrap}
+.btn-primary{font-size:14px;color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);padding-bottom:6px;transition:opacity .2s}
+.btn-primary:hover{opacity:.62}
+.btn-text{font-size:14px;color:var(--graphite);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:6px}
+.btn-text:hover{color:var(--ink);border-color:var(--line)}
+
+.hero-figure{margin:0;border:1px solid var(--line);background:var(--card);padding:24px 24px 16px}
+.hero-figure svg{display:block;width:100%;height:auto}
+.hero-figure figcaption{font-family:var(--mono);font-size:11px;color:var(--faint);border-top:1px solid var(--line-soft);padding-top:11px;margin-top:10px}
+.hero-figure .svg-mono{font-family:var(--mono)}
+.hero-figure .svg-sans{font-family:var(--sans)}
+
+.sec{border-top:1px solid var(--line);padding:82px 0}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:46px}
+.sec-title{display:flex;align-items:baseline;gap:16px}
+.sec-no{font-family:var(--mono);font-size:12px;color:var(--blue);letter-spacing:.1em}
+h2{font-family:var(--serif);font-size:clamp(28px,3.4vw,38px);font-weight:600;letter-spacing:-.01em;margin:0;line-height:1.3}
+.sec-desc{font-size:14px;color:var(--graphite);margin:0;max-width:430px;justify-self:end;line-height:1.75}
+
+.tri-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.note-card{background:var(--card);border:1px solid var(--line);padding:26px 24px}
+.tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--blue);border:1px solid rgba(44,95,138,.32);padding:2px 9px}
+.tag-goal{color:var(--graphite);border-color:var(--line)}
+.note-card h3{font-size:16px;font-weight:600;margin:20px 0 10px}
+.note-card p{font-size:14px;color:var(--graphite);margin:0;line-height:1.75}
+.note-card ul{margin:0;padding-left:18px;font-size:14px;color:var(--graphite);line-height:1.8}
+.src{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:14px;line-height:1.6}
+
+.project{border:1px solid var(--line);background:var(--card)}
+.project-head{padding:26px 28px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.project-head h3{font-family:var(--serif);font-size:22px;font-weight:600;margin:0}
+.project-head .badge{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--blue)}
+.project-flow{display:grid;grid-template-columns:repeat(3,1fr)}
+.flow-item{padding:26px 28px;border-right:1px solid var(--line)}
+.flow-item:last-child{border-right:0}
+.flow-k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--blue);margin-bottom:14px}
+.flow-item h4{font-size:15px;font-weight:600;margin:0 0 9px}
+.flow-item p{font-size:14px;color:var(--graphite);margin:0;line-height:1.78}
+.project-foot{padding:16px 28px;border-top:1px solid var(--line);font-size:13px;color:var(--graphite)}
+
+.acad-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px}
+.col-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--blue);margin:0 0 14px}
+.course-row{display:grid;grid-template-columns:1fr 96px 40px;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line-soft)}
+.course-name{font-size:14px}
+.course-bar{height:4px;background:rgba(26,26,24,.08)}
+.course-bar i{display:block;height:100%;background:var(--blue)}
+.course-score{font-family:var(--mono);font-size:14px;text-align:right}
+.avg{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:18px;margin-top:20px}
+.avg span{font-size:13px;color:var(--graphite)}
+.avg b{font-family:var(--serif);font-size:32px;font-weight:600;line-height:1}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line);padding:5px 11px;color:var(--ink);background:var(--card)}
+.certs{list-style:none;padding:0;margin:28px 0 0}
+.certs li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:14px}
+.certs span{font-family:var(--mono);font-size:12px;color:var(--graphite)}
+
+.honor-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 52px}
+.honor-list{list-style:none;padding:0;margin:0}
+.honor-list li{display:grid;grid-template-columns:14px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line-soft);font-size:14px;line-height:1.7}
+.honor-list li::before{content:"";width:5px;height:5px;background:var(--blue);margin-top:11px}
+.honor-list small{display:block;font-size:12px;color:var(--graphite);margin-top:2px}
+
+.sec-small .more-line{font-family:var(--serif);font-size:clamp(19px,2.5vw,25px);line-height:1.75;margin:0;max-width:780px}
+.more-line em{font-style:normal;color:var(--blue)}
+.more-sub{font-size:13px;color:var(--graphite);margin:16px 0 0}
+
+.contact-body{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:end}
+.mail{font-family:var(--serif);font-size:clamp(25px,4.2vw,44px);letter-spacing:-.01em;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:8px;display:inline-block;transition:color .2s,border-color .2s}
+.mail:hover{color:var(--blue);border-color:var(--blue)}
+.copy-btn{font-family:var(--mono);font-size:11px;color:var(--graphite);background:transparent;border:1px solid var(--line);padding:5px 10px;margin-left:16px;cursor:pointer;vertical-align:middle}
+.copy-btn:hover{color:var(--blue);border-color:var(--blue)}
+.contact-note{font-size:13px;color:var(--graphite);margin:22px 0 0}
+.crosses{font-family:var(--mono);font-size:clamp(19px,2.6vw,28px);letter-spacing:.1em;color:var(--faint);user-select:all;cursor:text;display:block;line-height:1.4;word-break:break-all}
+.cross-cap{font-family:var(--mono);font-size:11px;color:var(--faint);border-top:1px solid var(--line-soft);padding-top:11px;margin:14px 0 0}
+
+.foot{border-top:1px solid var(--line);padding:26px 0 40px}
+.foot-inner{display:flex;justify-content:space-between;gap:16px;font-size:12px;color:var(--faint);font-family:var(--mono);flex-wrap:wrap}
+
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .hero-figure{max-width:480px}
+  .sec-head{grid-template-columns:1fr;gap:14px}
+  .sec-desc{justify-self:start}
+  .tri-grid{grid-template-columns:1fr}
+  .project-flow{grid-template-columns:1fr}
+  .flow-item{border-right:0;border-bottom:1px solid var(--line)}
+  .flow-item:last-child{border-bottom:0}
+  .acad-grid,.honor-grid,.contact-body{grid-template-columns:1fr;gap:36px}
+}
+@media (max-width:600px){
+  .wrap{width:calc(100% - 36px)}
+  .topbar-inner{height:auto;padding:12px 0;flex-direction:column;align-items:flex-start;gap:10px}
+  nav{gap:16px;flex-wrap:wrap}
+  .hero{padding:58px 0 52px}
+  h1{font-size:clamp(52px,15vw,72px)}
+  .lede{font-size:18px}
+  .sec{padding:54px 0}
+  .project-head,.flow-item,.note-card{padding:20px}
+  .mail{font-size:23px;word-break:break-all}
+  .copy-btn{margin-left:0;margin-top:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+}
+@media print{
+  body{background:#fff;font-size:13px}
+  .topbar{position:static}
+  nav,.hero-actions,.copy-btn,.skip-link{display:none}
+  .js .reveal{opacity:1!important;transform:none!important}
+  .hero{padding:24px 0 32px}
+  .sec{padding:26px 0;break-inside:avoid}
+  .note-card,.project,.hero-figure{break-inside:avoid}
+  a{text-decoration:none}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="wordmark" href="#top">吴永芝<span>/ 材料科学与工程</span></a>
+    <nav aria-label="主导航">
+      <a href="#direction">方向</a>
+      <a href="#research">科研</a>
+      <a href="#academics">学业</a>
+      <a href="#honors">荣誉</a>
+      <a href="#contact">联系</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero wrap" id="top">
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">PERSONAL CV / 2026.11</p>
+        <h1>吴永芝</h1>
+        <p class="lede">从水系锌电到钠电材料，<br>把电极界面这件事做下去。</p>
+        <dl class="meta">
+          <div><dt>学校</dt><dd>韩山师范学院 · 材料科学与工程学院</dd></div>
+          <div><dt>专业</dt><dd>材料科学与工程 · 本科大三</dd></div>
+          <div><dt>课题</dt><dd>水系电池 · 电极—电解液界面与锌枝晶抑制</dd></div>
+        </dl>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#research">查看科研经历 ↘</a>
+          <a class="btn-text" href="#contact">联系方式</a>
+        </div>
+      </div>
+
+      <figure class="hero-figure reveal">
+        <svg viewBox="0 0 400 300" role="img" aria-labelledby="lineTitle lineDesc">
+          <title id="lineTitle">研究主线关系示意</title>
+          <desc id="lineDesc">从水系锌电课题，经过界面与枝晶抑制、改性思路，指向钠电材料方向。仅为关系示意，不含实测数据。</desc>
+          <g stroke="rgba(26,26,24,.07)" stroke-width="1">
+            <line x1="28" y1="60" x2="372" y2="60"/>
+            <line x1="28" y1="120" x2="372" y2="120"/>
+            <line x1="28" y1="180" x2="372" y2="180"/>
+            <line x1="28" y1="240" x2="372" y2="240"/>
+          </g>
+          <text class="svg-mono" x="28" y="24" font-size="11" letter-spacing="1.4" fill="#A9A69F">RESEARCH LINE / 研究主线</text>
+          <path d="M28 236 L150 158 L268 182 L372 58" fill="none" stroke="#2C5F8A" stroke-width="1.5" stroke-linejoin="round"/>
+          <g fill="#2C5F8A">
+            <circle cx="28" cy="236" r="3.5"/>
+            <circle cx="150" cy="158" r="3.5"/>
+            <circle cx="268" cy="182" r="3.5"/>
+            <circle cx="372" cy="58" r="3.5"/>
+          </g>
+          <g class="svg-sans" font-size="13" fill="#1A1A18">
+            <text x="28" y="262">水系锌电课题</text>
+            <text x="150" y="138">界面 / 枝晶抑制</text>
+            <text x="268" y="210">改性思路</text>
+            <text x="372" y="40" text-anchor="end">钠电材料方向</text>
+          </g>
+        </svg>
+        <figcaption>关系示意 · 不含实测数据</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec wrap reveal" id="direction">
+    <header class="sec-head">
+      <div class="sec-title"><span class="sec-no">01</span><h2>方向与定位</h2></div>
+      <p class="sec-desc">把「现在在做什么」和「打算往哪走」分开写，避免把规划当成已发生的成果。</p>
+    </header>
+    <div class="tri-grid">
+      <article class="note-card">
+        <span class="tag">现状</span>
+        <h3>现在在做什么</h3>
+        <p>材料科学与工程专业大三，跟随导师开展水系电池课题研究，聚焦电极—电解液界面行为与锌枝晶抑制。</p>
+      </article>
+      <article class="note-card">
+        <span class="tag">路径</span>
+        <h3>为什么往钠电走</h3>
+        <p>水系锌电里的界面副反应与枝晶生长，与钠电正负极面临的瓶颈同属一类问题；分析界面失效、设计改性方案的思路可以迁移。</p>
+        <p class="src">来自生涯发展报告中的路径判断</p>
+      </article>
+      <article class="note-card">
+        <span class="tag tag-goal">目标 · 备考中</span>
+        <h3>正在朝哪走</h3>
+        <ul>
+          <li>备考华南理工大学 材料方向硕士</li>
+          <li>目标岗位：宁德时代 钠离子电池材料研发工程师</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec wrap reveal" id="research">
+    <header class="sec-head">
+      <div class="sec-title"><span class="sec-no">02</span><h2>科研与项目</h2></div>
+      <p class="sec-desc">目前最完整的一段科研闭环：从提出问题、设计对照实验，到独立完成测试与表征。</p>
+    </header>
+    <div class="project">
+      <div class="project-head">
+        <h3>水系锌离子电池</h3>
+        <span class="badge">校级大创 · 核心成员</span>
+      </div>
+      <div class="project-flow">
+        <div class="flow-item">
+          <div class="flow-k">01 / 问题</div>
+          <h4>锌枝晶与副反应</h4>
+          <p>从微观层面切入储能材料的稳定性痛点，确定对照实验要验证的对象。</p>
+        </div>
+        <div class="flow-item">
+          <div class="flow-k">02 / 行动</div>
+          <h4>设计对照实验并独立完成测试</h4>
+          <p>设计 Cu-Zn-Sb 多元合金对照实验；独立完成电化学测试、微观表征与数据分析。</p>
+        </div>
+        <div class="flow-item">
+          <div class="flow-k">03 / 产出</div>
+          <h4>提出双协同防护思路</h4>
+          <p>从机理出发提出「远端—近端」双协同防护思路，走完提出—设计—验证—复盘的闭环。</p>
+        </div>
+      </div>
+      <div class="project-foot">能力沉淀：材料表征方法、实验设计与数据分析、从微观机制推到改性方案。</div>
+    </div>
+  </section>
+
+  <section class="sec wrap reveal" id="academics">
+    <header class="sec-head">
+      <div class="sec-title"><span class="sec-no">03</span><h2>学业与技能</h2></div>
+      <p class="sec-desc">五门专业核心课的成绩、语言与工具证书，以及能上手的实验手段。</p>
+    </header>
+    <div class="acad-grid">
+      <div>
+        <p class="col-label">专业核心课 / CORE COURSES</p>
+        <div class="course-row"><span class="course-name">基础化学实验</span><span class="course-bar"><i style="width:94%"></i></span><span class="course-score">94</span></div>
+        <div class="course-row"><span class="course-name">材料研究与测试方法</span><span class="course-bar"><i style="width:94%"></i></span><span class="course-score">94</span></div>
+        <div class="course-row"><span class="course-name">材料科学基础</span><span class="course-bar"><i style="width:91%"></i></span><span class="course-score">91</span></div>
+        <div class="course-row"><span class="course-name">材料物理性能</span><span class="course-bar"><i style="width:89%"></i></span><span class="course-score">89</span></div>
+        <div class="course-row"><span class="course-name">材料工程基础</span><span class="course-bar"><i style="width:88%"></i></span><span class="course-score">88</span></div>
+        <div class="avg"><span>五门平均</span><b>91.2</b></div>
+      </div>
+      <div>
+        <p class="col-label">实验与工具 / METHODS</p>
+        <div class="chips">
+          <span class="chip">恒电位仪</span>
+          <span class="chip">XRD</span>
+          <span class="chip">EIS</span>
+          <span class="chip">Origin</span>
+          <span class="chip">电池组装</span>
+          <span class="chip">电化学测试</span>
+          <span class="chip">微观表征</span>
+        </div>
+        <ul class="certs">
+          <li>英语六级 CET-6 <span>500</span></li>
+          <li>计算机二级 <span>WPS / Python</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap reveal" id="honors">
+    <header class="sec-head">
+      <div class="sec-title"><span class="sec-no">04</span><h2>荣誉与学生工作</h2></div>
+      <p class="sec-desc">课业之外的积累：奖学金、实验类竞赛，以及两年的组织与统筹经历。</p>
+    </header>
+    <div class="honor-grid">
+      <div>
+        <p class="col-label">荣誉 / AWARDS</p>
+        <ul class="honor-list">
+          <li><div>连续两年校级优秀学生奖学金<small>二等、三等</small></div></li>
+          <li><div>校级「优秀学生干部」</div></li>
+          <li><div>全国大学生金相技能大赛 校级优秀奖</div></li>
+          <li><div>院级党团知识竞赛、粉笔字竞赛等多项奖项</div></li>
+        </ul>
+      </div>
+      <div>
+        <p class="col-label">经历 / EXPERIENCE</p>
+        <ul class="honor-list">
+          <li><div>院团委创新创业部部长<small>两年，负责活动策划、团队协调与事务统筹</small></div></li>
+          <li><div>曾任生活委员</div></li>
+          <li><div>走访潮州陶瓷企业<small>补工程与产业视角</small></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-small wrap reveal" id="more">
+    <header class="sec-head">
+      <div class="sec-title"><span class="sec-no">05</span><h2>一点补充</h2></div>
+      <p class="sec-desc">不占版面，只是让这页简历背后有个具体的人。</p>
+    </header>
+    <p class="more-line">本届校运会 <em>800 米</em> 与 <em>4×400 米接力</em> 均获第七名。</p>
+    <p class="more-sub">长期保持运动节奏。</p>
+  </section>
+
+  <section class="sec wrap reveal" id="contact">
+    <header class="sec-head">
+      <div class="sec-title"><span class="sec-no">06</span><h2>联系</h2></div>
+      <p class="sec-desc">邮件是最稳妥的方式。其余渠道待补充。</p>
+    </header>
+    <div class="contact-body">
+      <div>
+        <p class="col-label">邮箱 / EMAIL</p>
+        <a class="mail" href="mailto:340981634@qq.com">340981634@qq.com</a><button class="copy-btn" type="button" data-mail="340981634@qq.com" aria-label="复制邮箱地址">复制</button>
+        <p class="contact-note">欢迎就科研、考研或实习机会来信。</p>
+      </div>
+      <div>
+        <span class="crosses">××××××××××××</span>
+        <p class="cross-cap">电话 / LINKEDIN / GITHUB · 待补</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <span>吴永芝 · 材料科学与工程</span>
+    <span>UPDATED 2026.11</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(reveals, function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+    Array.prototype.forEach.call(reveals, function(el){ io.observe(el); });
+  }
+
+  var links = document.querySelectorAll('nav a');
+  var map = {};
+  Array.prototype.forEach.call(links, function(a){
+    var id = a.getAttribute('href').slice(1);
+    if (document.getElementById(id)) map[id] = a;
+  });
+  if ('IntersectionObserver' in window) {
+    var so = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        Array.prototype.forEach.call(links, function(a){ a.classList.remove('active'); });
+        if (map[e.target.id]) map[e.target.id].classList.add('active');
+      });
+    }, { rootMargin: '-25% 0px -65% 0px' });
+    Object.keys(map).forEach(function(id){ so.observe(document.getElementById(id)); });
+  }
+
+  var btn = document.querySelector('.copy-btn');
+  if (btn) {
+    function done(){ btn.textContent = '已复制'; setTimeout(function(){ btn.textContent = '复制'; }, 1600); }
+    function fallback(){
+      var t = document.createElement('textarea');
+      t.value = btn.getAttribute('data-mail');
+      t.style.position = 'absolute'; t.style.left = '-9999px';
+      document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); done(); } catch (err) { btn.textContent = '请手动复制'; }
+      document.body.removeChild(t);
+    }
+    btn.addEventListener('click', function(){
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(btn.getAttribute('data-mail')).then(done, fallback);
+      } else { fallback(); }
+    });
+  }
+})();
+</script>
+</body>
+</html>
